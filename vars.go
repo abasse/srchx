@@ -6,7 +6,7 @@ import (
 	"path"
 	"runtime"
 
-	"github.com/alash3al/libsrchx"
+	"github.com/abasse/libsrchx"
 )
 
 var (

@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"runtime"
 
-	"github.com/alash3al/libsrchx"
+	srchx "github.com/abasse/libsrchx"
 	"github.com/icrowley/fake"
 )
 
