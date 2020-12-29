@@ -56,3 +56,8 @@ Refs
 About Me
 =========
 A Gopher who likes to build tiny things that make big change.
+
+
+Changes to alash3al version
+===========================
++ Addeed option to extrct ID from posted JSON (API path: /.../extract )
