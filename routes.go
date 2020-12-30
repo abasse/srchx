@@ -3,7 +3,7 @@ package main
 import (
 	"strings"
 
-	"github.com/abasse/libsrchx"
+	srchx "github.com/abasse/libsrchx"
 
 	"github.com/blevesearch/bleve"
 	"github.com/blevesearch/bleve/search/query"
@@ -184,6 +184,10 @@ func routeSearch(c echo.Context) error {
 
 	if input.QueryString != "" {
 		q = query.Query(bleve.NewQueryStringQuery(input.QueryString))
+	}
+
+	if strings.Contains(input.QueryString, "*") {
+		q = query.Query(bleve.NewWildcardQuery("*" + strings.Trim(strings.ToLower(input.QueryString), "*") + "*"))
 	}
 
 	if q == nil {

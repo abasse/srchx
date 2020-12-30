@@ -25,6 +25,7 @@ func init() {
 		go func() {
 			ndx, _ := store.GetIndex("test/fake")
 			fake.SetLang("en")
+
 			for i := 0; i < *flagGenFakeData; i++ {
 				ndx.Put(map[string]interface{}{
 					"full_name": fake.FullName(),
@@ -38,7 +39,9 @@ func init() {
 					"power":     rand.Intn(10),
 					"family":    rand.Intn(10),
 				})
+				log.Printf("[INFO]Testdata entry %v", i)
 			}
+			log.Printf("[INFO]Testdata creation completed")
 		}()
 	}
 }

@@ -1,0 +1,13 @@
+GET http://localhost:2050 HTTP/1.1
+
+###
+
+POST http://localhost:2050/test/fake/_search HTTP/1.1
+content-type: application/json
+
+{
+	"query": "country:Sloveni*",
+	"sort": ["updated_at"],
+	"offset": 0,
+	"size": 10
+}
