@@ -6,7 +6,7 @@ import (
 	"path"
 	"runtime"
 
-	"github.com/abasse/libsrchx"
+	srchx "github.com/abasse/libsrchx"
 )
 
 var (
@@ -14,9 +14,12 @@ var (
 	flagEngine      = flag.String("engine", "boltdb", "the engine to be used as a backend")
 	flagStoragePath = flag.String("storage", path.Join(path.Dir(os.Args[0]), "data"), "the storage path")
 	flagWorkers     = flag.Int("workers", runtime.NumCPU(), "number of workers to be used")
-	flagGenFakeData = flag.Int("testdata", 0, "this will generate a `test/fake` collection with fake data just for testing")
+	flagGenFakeData = flag.Int("testdata", 0, "[number of records] this will generate a `test/fake` collection with fake data just for testing")
+	flagStoreJson   = flag.Bool("storejson", false, "store the JSON file in the filesystem")
 )
 
 var (
-	store *srchx.Store
+	store     *srchx.Store
+	Jsonpath  string
+	StoreJson bool
 )

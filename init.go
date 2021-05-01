@@ -21,6 +21,9 @@ func init() {
 		log.Fatal(err)
 	}
 
+	Jsonpath = *flagStoragePath + "/json_data/"
+	StoreJson = *flagStoreJson
+
 	if *flagGenFakeData > 0 {
 		go func() {
 			ndx, _ := store.GetIndex("test/fake")

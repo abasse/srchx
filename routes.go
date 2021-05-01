@@ -1,6 +1,10 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
+	"os"
+	"path/filepath"
 	"strings"
 
 	srchx "github.com/abasse/libsrchx"
@@ -9,6 +13,59 @@ import (
 	"github.com/blevesearch/bleve/search/query"
 	"github.com/labstack/echo"
 )
+
+/**
+ * deleteDoc - delete the json file from filesystem
+ */
+func deleteDoc(ndx string, typ string, id string) {
+
+	thepath := Jsonpath + ndx + "/" + typ + "/" + id
+	files, err := filepath.Glob(thepath + "/*")
+	if err != nil {
+		panic(err)
+	}
+	for _, f := range files {
+		if err := os.Remove(f); err != nil {
+			panic(err)
+		}
+	}
+
+	err = os.Remove(thepath)
+	if err != nil {
+		panic(err)
+	}
+
+	return
+}
+
+/**
+ * saveDoc - save the json to the filesystem
+ */
+func saveDoc(doc map[string]interface{}, ndx string, typ string, id string) {
+
+	thepath := Jsonpath + ndx + "/" + typ + "/" + id
+
+	if _, err := os.Stat(thepath); os.IsNotExist(err) {
+		os.MkdirAll(thepath, 0777)
+	}
+
+	f, err := os.Create(thepath + "/" + id + ".json")
+	if err != nil {
+		panic(err)
+	}
+
+	jsonString, err := json.Marshal(doc)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	_, err = f.Write(jsonString)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	return
+}
 
 /**
  * routeHome - the home route
@@ -55,10 +112,15 @@ func routeIndex(c echo.Context) error {
 		})
 	}
 
+	if StoreJson {
+		saveDoc(doc, ndx, typ, doc["id"].(string))
+	}
+
 	return c.JSON(200, map[string]interface{}{
 		"success": true,
 		"payload": doc,
 	})
+
 }
 
 /**
@@ -142,6 +204,10 @@ func routeDelete(c echo.Context) error {
 	}
 
 	index.Delete(id)
+
+	if StoreJson {
+		deleteDoc(ndx, typ, id)
+	}
 
 	return c.JSON(200, map[string]interface{}{
 		"success": true,
