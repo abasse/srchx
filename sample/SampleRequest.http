@@ -11,3 +11,53 @@ content-type: application/json
 	"offset": 0,
 	"size": 10
 }
+
+###
+
+POST http://localhost:2050/twitter/tweets/_search HTTP/1.1
+content-type: application/json
+
+{
+	"query": "*",
+	"sort": [],
+	"offset": 0,
+	"size": 10,
+	"join": [
+		{
+			"from": "twitter/tweets",
+			"on": "parent_id",
+			"as": "parent",
+			"join": {
+				
+			}
+		}
+	]
+}
+
+###
+
+GET http://localhost:2050/twitter/tweets/_doc/04bd3ba0-4b57-11eb-8094-acbc32bbc8c7 HTTP/1.1
+
+###
+POST /twitter/user/_doc/new HTTP/1.1
+Host: localhost:2050
+Content-Type: application/json
+
+{
+  	"name": "Peter Petersen",
+	"age": 44
+}
+
+###
+POST /twitter/tweets/_doc/new HTTP/1.1
+Host: localhost:2050
+Content-Type: application/json
+
+{
+	"user": "u5",
+	"content": "this is my post",
+    "foo":"baz",
+    "parent_id":"8cde13f8-4b64-11eb-ba39-acbc32bbc8c7",
+	"views": 5
+}
+

@@ -195,10 +195,12 @@ func routeSearch(c echo.Context) error {
 	}
 
 	joins := []*srchx.Join{}
+
 	for _, join := range input.Join {
 		if join.From != "" {
 			ndx, e := store.GetIndex(join.From)
 			if e != nil {
+
 				return c.JSON(404, map[string]interface{}{
 					"success": false,
 					"error":   e.Error(),

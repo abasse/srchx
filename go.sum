@@ -7,8 +7,12 @@ github.com/RoaringBitmap/roaring v0.4.23 h1:gpyfd12QohbqhFO4NVDUdoPOCXsyahYRQhIN
 github.com/RoaringBitmap/roaring v0.4.23/go.mod h1:D0gp8kJQgE1A4LQ5wFLggQEyvDi06Mq5mKs52e1TwOo=
 github.com/RoaringBitmap/roaring v0.5.5 h1:naNqvO1mNnghk2UvcsqnzHDBn9DRbCIRy94GmDTRVTQ=
 github.com/RoaringBitmap/roaring v0.5.5/go.mod h1:puNo5VdzwbaIQxSiDIwfXl4Hnc+fbovcX4IW/dSTtUk=
-github.com/abasse/libsrchx v0.0.0-20201229174210-037156e67076 h1:ZMimCYUy/nv7KT2rD6TmMJECVO/H4+Y/oXPmc1jLZvs=
-github.com/abasse/libsrchx v0.0.0-20201229174210-037156e67076/go.mod h1:0s0dTWsBNK/CBKhVPbStld3ul/wX3wOIFF0vDfx4V88=
+github.com/abasse/libsrchx v0.0.0-20210430154123-cc2f277209e3 h1:MykJ0DKMZcCvFS4ggFJxjJ2vnGX4Lkb1r07kINJ2a2Y=
+github.com/abasse/libsrchx v0.0.0-20210430154123-cc2f277209e3/go.mod h1:0s0dTWsBNK/CBKhVPbStld3ul/wX3wOIFF0vDfx4V88=
+github.com/abasse/libsrchx v0.0.0-20210430155043-46a743957e53 h1:z3FBm/H2lBXFt0oN8N7+SMBlXAB7K8dECMGxZvjrdtw=
+github.com/abasse/libsrchx v0.0.0-20210430155043-46a743957e53/go.mod h1:0s0dTWsBNK/CBKhVPbStld3ul/wX3wOIFF0vDfx4V88=
+github.com/abasse/libsrchx v0.0.0-20210430160337-726b7393648c h1:pfUPHzDwZuilvPLBGo6hmPSJbZEz+nVSoTFvAosae54=
+github.com/abasse/libsrchx v0.0.0-20210430160337-726b7393648c/go.mod h1:0s0dTWsBNK/CBKhVPbStld3ul/wX3wOIFF0vDfx4V88=
 github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6/go.mod h1:grANhF5doyWs3UAsr3K4I6qtAmlQcZDesFNEHPZAzj8=
 github.com/blevesearch/bleve v1.0.14 h1:Q8r+fHTt35jtGXJUM0ULwM3Tzg+MRfyai4ZkWDy2xO4=
 github.com/blevesearch/bleve v1.0.14/go.mod h1:e/LJTr+E7EaoVdkQZTfoz7dt4KoDNvDbLb8MSKuNTLQ=

@@ -4,7 +4,7 @@ go 1.15
 
 require (
 	github.com/RoaringBitmap/roaring v0.5.5 // indirect
-	github.com/abasse/libsrchx v0.0.0-20201229174210-037156e67076
+	github.com/abasse/libsrchx v0.0.0-20210430160337-726b7393648c
 	github.com/blevesearch/bleve v1.0.14
 	github.com/corpix/uarand v0.1.1 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
@@ -16,7 +16,7 @@ require (
 	github.com/icrowley/fake v0.0.0-20180203215853-4178557ae428
 	github.com/kr/text v0.2.0 // indirect
 	github.com/labstack/echo v3.3.10+incompatible
-	github.com/labstack/gommon v0.3.0
+	github.com/labstack/gommon v0.3.0 // indirect
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/nxadm/tail v1.4.6 // indirect
 	github.com/onsi/ginkgo v1.14.2 // indirect
@@ -34,3 +34,5 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776 // indirect
 )
+
+replace github.com/abasse/libsrchx => ../libsrchx
