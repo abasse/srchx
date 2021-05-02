@@ -53,11 +53,10 @@ Refs
 2. [QueryStringQuery](http://blevesearch.com/docs/Query-String-Query/)
 3. [Sorting](http://blevesearch.com/docs/Sorting/)
 
-About Me
-=========
-A Gopher who likes to build tiny things that make big change.
-
 
 Changes to alash3al version
 ===========================
-+ Addeed option to extrct ID from posted JSON (API path: /.../extract )
++ Removed badgerdb support (the old badgerdb version caused too many issues)
++ Support to store JSON data on post/update in the file system
++ Support to load JSON files from file system
+
