@@ -16,6 +16,7 @@ var (
 	flagWorkers     = flag.Int("workers", runtime.NumCPU(), "number of workers to be used")
 	flagGenFakeData = flag.Int("testdata", 0, "[number of records] this will generate a `test/fake` collection with fake data just for testing")
 	flagStoreJson   = flag.Bool("storejson", false, "store the JSON file in the filesystem")
+	flagImportJson  = flag.Bool("importjson", false, "import JSON files from filesystem")
 )
 
 var (

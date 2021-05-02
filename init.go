@@ -1,10 +1,15 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
+	"io/ioutil"
 	"log"
 	"math/rand"
+	"os"
+	"path/filepath"
 	"runtime"
+	"strings"
 
 	srchx "github.com/abasse/libsrchx"
 	"github.com/icrowley/fake"
@@ -23,6 +28,29 @@ func init() {
 
 	Jsonpath = *flagStoragePath + "/json_data/"
 	StoreJson = *flagStoreJson
+
+	if *flagImportJson == true {
+		files, err := WalkMatch(Jsonpath, "*.json")
+		if err != nil {
+			panic(err)
+		}
+
+		for i, f := range files {
+			log.Printf("[INFO]Import %v %s", i, f)
+			p := strings.Split(f, "json_data/")
+			n := strings.Split(p[1], "/")
+			ndx, _ := store.GetIndex(n[0] + "/" + n[1])
+
+			file, _ := ioutil.ReadFile(f)
+			jsonMap := make(map[string]interface{})
+			err := json.Unmarshal([]byte(file), &jsonMap)
+			if err != nil {
+				panic(err)
+			}
+			ndx.Put(jsonMap)
+		}
+		log.Printf("[INFO]JSON import completed")
+	}
 
 	if *flagGenFakeData > 0 {
 		go func() {
@@ -47,4 +75,26 @@ func init() {
 			log.Printf("[INFO]Testdata creation completed")
 		}()
 	}
+}
+
+func WalkMatch(root, pattern string) ([]string, error) {
+	var matches []string
+	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if info.IsDir() {
+			return nil
+		}
+		if matched, err := filepath.Match(pattern, filepath.Base(path)); err != nil {
+			return err
+		} else if matched {
+			matches = append(matches, path)
+		}
+		return nil
+	})
+	if err != nil {
+		return nil, err
+	}
+	return matches, nil
 }
